@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".PlantDetailActivity"></activity>
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search"
