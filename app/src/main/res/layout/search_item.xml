@@ -15,7 +15,8 @@
       android:layout_marginStart="8dp"
       app:layout_constraintTop_toTopOf="parent"
       android:layout_marginTop="8dp"
-      android:layout_marginLeft="8dp" />
+      android:layout_marginLeft="8dp"
+      android:contentDescription="@string/photoContentDescription" />
 
   <ImageView
       android:id="@+id/starImageView"
@@ -26,7 +27,8 @@
       android:layout_marginTop="8dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      tools:src="@tools:sample/avatars[1]" />
+      tools:src="@tools:sample/avatars[1]"
+      android:contentDescription="@string/starContentDescription" />
 
   <TextView
       android:id="@+id/nameTextView"
