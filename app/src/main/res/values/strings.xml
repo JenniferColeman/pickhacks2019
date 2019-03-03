@@ -94,4 +94,6 @@
     <string name="starContentDescription">Star indicating optimal for diet.</string>
     <string name="photoContentDescription">Image of the item being displayed.</string>
     <string name="title_activity_other_search">OtherSearch</string>
+    <string name="todo">TODO</string>
+    <string name="textview">TextView</string>
 </resources>
