@@ -1,7 +1,10 @@
 package com.pickhacks.pickhacks2019;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
     public static class SearchItemViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mPhotoImageView;
+
         public ImageView mStarImageView;
         public TextView mNameTextView;
         public TextView mTimeTextView;
@@ -41,14 +45,14 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
     @Override
     public SearchItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item, parent, false);
-        SearchItemViewHolder sivh = new SearchItemViewHolder(v);
-        return sivh;
+        return new SearchItemViewHolder(v);
     }
 
-    public void onBindViewHolder(SearchItemViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull SearchItemViewHolder viewHolder, int position) {
         SearchItem currentItem = mSearchItems.get(position);
 
-        viewHolder.mPhotoImageView.setImageResource(currentItem.getmPhoto());
+        loadImageFromBase64IntoView(viewHolder.mPhotoImageView, currentItem.getmPhoto());
+        //viewHolder.mPhotoImageView.setImageResource(currentItem.getmPhoto());
         //viewHolder.mStarImageView.setImageResource(currentItem.ismStar());
         viewHolder.mBriefTextView.setText(currentItem.getmBrief());
         viewHolder.mNameTextView.setText(currentItem.getmName());
@@ -58,5 +62,11 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
     @Override
     public int getItemCount() {
         return mSearchItems.size();
+    }
+
+    private void loadImageFromBase64IntoView(ImageView imageView, String encodedImage) {
+        byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        imageView.setImageBitmap(decodedByte);
     }
 }
