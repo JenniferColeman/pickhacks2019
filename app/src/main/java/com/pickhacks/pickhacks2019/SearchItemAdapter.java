@@ -1,5 +1,7 @@
 package com.pickhacks.pickhacks2019;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
@@ -26,6 +28,7 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
         public TextView mTimeTextView;
         public TextView mBriefTextView;
 
+
         public SearchItemViewHolder(View itemView) {
             super(itemView);
 
@@ -34,6 +37,16 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
             this.mNameTextView = itemView.findViewById(R.id.nameTextView);
             this.mTimeTextView = itemView.findViewById(R.id.timeTextView);
             this.mBriefTextView = itemView.findViewById(R.id.briefTextView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, PlantDetailActivity.class);
+                    intent.putExtra("plantName", mNameTextView.getText());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
