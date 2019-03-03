@@ -52,8 +52,12 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
         SearchItem currentItem = mSearchItems.get(position);
 
         loadImageFromBase64IntoView(viewHolder.mPhotoImageView, currentItem.getmPhoto());
-        //viewHolder.mPhotoImageView.setImageResource(currentItem.getmPhoto());
-        //viewHolder.mStarImageView.setImageResource(currentItem.ismStar());
+        if (currentItem.ismStar()) {
+            viewHolder.mStarImageView.setImageResource(R.drawable.filledstar);
+        }
+        else {
+            viewHolder.mStarImageView.setImageResource(R.drawable.emptystar);
+        }
         viewHolder.mBriefTextView.setText(currentItem.getmBrief());
         viewHolder.mNameTextView.setText(currentItem.getmName());
         viewHolder.mTimeTextView.setText(currentItem.getmTime());
@@ -66,6 +70,7 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.Se
 
     private void loadImageFromBase64IntoView(ImageView imageView, String encodedImage) {
         byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+        System.out.println(encodedImage);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         imageView.setImageBitmap(decodedByte);
     }
