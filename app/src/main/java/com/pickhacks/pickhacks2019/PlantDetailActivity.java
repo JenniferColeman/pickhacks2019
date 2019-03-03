@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 public class PlantDetailActivity extends AppCompatActivity {
 
-    static private String url = "http://995c7daf.ngrok.io" + "/getDetail?name=";
+    static private String url = "http://5f95dab0.ngrok.io" + "/getDetail?name=";
     String  mBrief,
             mTime,
             mName,
@@ -37,6 +37,7 @@ public class PlantDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_detail);
+
 
         requestQueue = Volley.newRequestQueue(this);
 

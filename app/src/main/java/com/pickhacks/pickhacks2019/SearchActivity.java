@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 public class SearchActivity extends AppCompatActivity {
 
-    static private String url = "http://995c7daf.ngrok.io" + "/getList?diet=";
+    static private String url = "http://5f95dab0.ngrok.io" + "/getList?diet=";
     static private ArrayList<SearchItem> mSearchList;
     static private RequestQueue requestQueue;
 
@@ -112,6 +112,12 @@ public class SearchActivity extends AppCompatActivity {
                             System.out.println("Brief: " + plantBrief);
 
                             // add to the list
+                            mSearchList.add(new SearchItem(
+                                    plantPhoto,
+                                    plantBrief,
+                                    plantStar,
+                                    "TIME",
+                                    plantName));
                             mSearchList.add(new SearchItem(
                                     plantPhoto,
                                     plantBrief,
